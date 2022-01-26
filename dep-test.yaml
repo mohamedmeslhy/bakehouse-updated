@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: app-prod
+  name: app-prod
+  namespace: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-prod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-prod
+    spec:
+      containers:
+      - image: mohamedmoselhy110/bakehouse
+        name: app-prod
+        resources: {}
+        ports:
+        - containerPort: 80
+   
+
