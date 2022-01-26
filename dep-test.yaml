@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: app-test
+  name: app-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-test
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-test
+    spec:
+      containers:
+      - image: mohamedmoselhy110/bakehouse
+        name: app-test
+        resources: {}
+        ports:
+        - containerPort: 80
+   
+
