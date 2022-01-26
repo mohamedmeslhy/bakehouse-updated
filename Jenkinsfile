@@ -8,6 +8,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh """
                 echo "$USERNAME"
+                whoami
           """
         }
         
