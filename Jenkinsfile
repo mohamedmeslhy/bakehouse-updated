@@ -3,14 +3,12 @@ pipeline {
   stages {
     stage('start') {
       steps {
-        echo "Gerges"
+      
         script {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        withCredentials([file(credentialsId: 'kubecongif', variable: 'k8s_config')]) {
           sh """
-              docker login -u ${USERNAME} -p ${PASSWORD}
-              docker build -t mohamedmoselhy110/bakehouse:latest .
-              docker push mohamedmoselhy110/bakehouse:latest
-
+              gcloud container clusters get-credentials my-gke-cluster --region us-central1 --project active-sun-337308
+              kubectl apply -f . --kubeconfig=$k8s_config
           """
         }
         
